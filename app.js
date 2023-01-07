@@ -10,11 +10,14 @@ require("dotenv").config();
 const cors = require("cors");
 const app = express();
 const port = 8080;
+let DB = process.env.MONGO_URl_DB;
+// let DB =
+//   "mongodb+srv://sumit:12345@cluster0.tqpgbjd.mongodb.net/ToDoDB?retryWrites=true&w=majority";
 mongoose.set("strictQuery", true);
 app.use(bodyparser.json());
 app.use(express.json());
 app.use(cors());
-mongoose.connect("mongodb://localhost/todoApp", (e) => {
+mongoose.connect(DB, (e) => {
   if (e) {
     console.log(e.message);
   } else {
